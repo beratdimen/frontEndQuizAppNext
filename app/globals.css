@@ -45,3 +45,43 @@ h6 {
 #__next {
   isolation: isolate;
 }
+
+.container {
+  padding-inline: 24px;
+  background-color: white;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.container.dark {
+  background-color: #313e51;
+}
+
+@media (width > 769px) {
+  .container {
+    padding-inline: 64px;
+  }
+}
+
+@media (width > 1024px) {
+  .container {
+    padding-inline: 140px;
+
+    .generalBody {
+      display: flex;
+      align-items: start;
+      gap: 130px;
+
+      .heroContainer {
+        width: 100%;
+      }
+
+      .card {
+        width: 100%;
+      }
+    }
+  }
+}

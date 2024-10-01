@@ -1,0 +1,41 @@
+.card {
+  display: grid;
+  gap: 12px;
+
+  .cardbox {
+    background-color: white;
+    padding-block: 12px;
+    padding-left: 12px;
+    box-shadow: 0px 16px 40px 0px #8fa0c124;
+    border-radius: 12px;
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    width: 100%;
+
+    span {
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 18px;
+      text-align: left;
+      color: #313e51;
+    }
+  }
+
+  .cardbox.dark {
+    background-color: #3b4d66;
+    box-shadow: 0px 16px 40px 0px #313e5124;
+
+    button {
+      span {
+        color: white;
+      }
+    }
+  }
+}
