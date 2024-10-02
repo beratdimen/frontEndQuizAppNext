@@ -22,17 +22,22 @@ export default function Home() {
       ? localStorage.getItem("choose")
       : null;
   });
-
   useEffect(() => {
-    localStorage.setItem("page", page);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("page", page);
+    }
   }, [page]);
 
   useEffect(() => {
-    localStorage.setItem("choose", choose);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("choose", choose);
+    }
   }, [choose]);
 
   useEffect(() => {
-    localStorage.clear();
+    if (typeof window !== "undefined") {
+      localStorage.clear();
+    }
   }, []);
 
   console.log("choose :>> ", choose);
@@ -45,11 +50,7 @@ export default function Home() {
         </div>
         <div className="generalBody">
           <Hero />
-          <Title
-            data={data}
-            setChoose={setChoose}
-            setPage={setPage}
-          />
+          <Title data={data} setChoose={setChoose} setPage={setPage} />
         </div>
       </div>
     </div>

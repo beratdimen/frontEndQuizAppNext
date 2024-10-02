@@ -9,9 +9,10 @@ export const ThemeProvider = ({ children }) => {
   );
 
   useEffect(() => {
-    localStorage.setItem("darkMode", darkMode);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem("darkMode", darkMode);
+    }
   }, [darkMode]);
-
   const toggleDarkMode = () => {
     setDarkMode((prevMode) => !prevMode);
   };
