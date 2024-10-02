@@ -39,23 +39,33 @@ export default function Questions({ choose }) {
   });
 
   useEffect(() => {
-    localStorage.setItem("questionIndex", questionIndex);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("questionIndex", questionIndex);
+    }
   }, [questionIndex]);
 
   useEffect(() => {
-    localStorage.setItem("answer", answer);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("answer", answer);
+    }
   }, [answer]);
 
   useEffect(() => {
-    localStorage.setItem("score", score);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("score", score);
+    }
   }, [score]);
 
   useEffect(() => {
-    localStorage.setItem("active", active);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("active", active);
+    }
   }, [active]);
 
   useEffect(() => {
-    localStorage.setItem("btnText", btnText);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("btnText", btnText);
+    }
   }, [btnText]);
 
   function sendAnswer(correctAnswer) {
