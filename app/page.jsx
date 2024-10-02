@@ -22,6 +22,7 @@ export default function Home() {
       ? localStorage.getItem("choose")
       : null;
   });
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       localStorage.setItem("page", page);
@@ -35,9 +36,7 @@ export default function Home() {
   }, [choose]);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      localStorage.clear();
-    }
+    localStorage.clear();
   }, []);
 
   console.log("choose :>> ", choose);

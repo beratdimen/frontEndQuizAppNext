@@ -89,10 +89,8 @@ export default function Questions({ choose }) {
   }
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      if (!answer) {
-        setActive(false);
-      }
+    if (!answer) {
+      setActive(false);
     }
   }, [answer]);
 
