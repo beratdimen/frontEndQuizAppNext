@@ -57,7 +57,7 @@ h6 {
 }
 
 .container.dark {
-  background-color: #313e51;
+  background-color: #313e51 !important;
 }
 
 @media (width > 769px) {

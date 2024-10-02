@@ -1,9 +1,9 @@
+import { ThemeContext } from "@/context";
 import "./header.css";
+import { useContext } from "react";
 
-export default function Header({ setDarkMode, darkMode }) {
-  const toggleDarkMode = () => {
-    setDarkMode((prevMode) => !prevMode);
-  };
+export default function Header() {
+  const { darkMode, toggleDarkMode } = useContext(ThemeContext);
 
   return (
     <div className="header">

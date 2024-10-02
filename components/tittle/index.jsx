@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./tittle.css";
+import { useRouter } from "next/navigation";
+import { ThemeContext } from "@/context";
 
-export default function Title({ data, setChoose, setPage, darkMode }) {
+export default function Title({ data, setPage }) {
+  const { darkMode } = useContext(ThemeContext);
+  const router = useRouter();
   return (
     <div className="card">
       {data.quizzes.map((x, i) => (
@@ -9,7 +13,7 @@ export default function Title({ data, setChoose, setPage, darkMode }) {
           <button
             className="cardBtn"
             onClick={() => {
-              setChoose(x.title);
+              router.push(`/${x.title.toLowerCase()}`);
               setPage(1);
             }}
           >

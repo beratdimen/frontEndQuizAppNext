@@ -1,24 +1,27 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./question.css";
 import Header from "../header";
+import { useRouter } from "next/navigation";
+import { data } from "@/data";
+import { ThemeContext } from "@/context";
 
-export default function Questions({
-  data,
-  choose,
-  setPage,
-  darkMode,
-  setDarkMode,
-}) {
+export default function Questions({ choose }) {
+  const router = useRouter();
+
+  const { darkMode } = useContext(ThemeContext);
+
   const [questionIndex, setQuestionIndex] = useState(() => {
     return localStorage.getItem("questionIndex")
       ? parseInt(localStorage.getItem("questionIndex"), 10)
       : 0;
   });
+
   const [answer, setAnswer] = useState(() => {
     return localStorage.getItem("answer")
       ? localStorage.getItem("answer")
       : null;
   });
+
   const [score, setScore] = useState(() => {
     return localStorage.getItem("score")
       ? parseInt(localStorage.getItem("score"), 10)
@@ -57,7 +60,7 @@ export default function Questions({
 
   function sendAnswer(correctAnswer) {
     if (btnText === "Cevap Gönder") {
-      if (answer !== "") {
+      if (answer) {
         setActive(true);
         if (answer === correctAnswer) {
           setScore(score + 1);
@@ -75,18 +78,24 @@ export default function Questions({
     }
   }
 
+  useEffect(() => {
+    if (!answer) {
+      setActive(false);
+    }
+  }, [answer]);
+
   return (
     <div className="questionsContainer">
       <div className={`questionHeader ${darkMode ? "dark" : ""}`}>
         {data.quizzes.map(
           (x, i) =>
-            choose === x.title && (
+            choose === x.title.toLowerCase() && (
               <div className="headerIcon" key={i}>
                 <img src={x.icon} alt="" /> <p>{x.title}</p>
               </div>
             )
         )}
-        <Header darkMode={darkMode} setDarkMode={setDarkMode} />
+        <Header />
       </div>
 
       {questionIndex > 9 ? (
@@ -101,7 +110,7 @@ export default function Questions({
             <div className={`completeCard ${darkMode ? "dark" : ""}`}>
               {data.quizzes.map(
                 (x, i) =>
-                  choose === x.title && (
+                  choose == x.title.toLowerCase() && (
                     <div className="headerIcon" key={i}>
                       <img src={x.icon} alt="" /> <p>{x.title}</p>
                     </div>
@@ -115,7 +124,7 @@ export default function Questions({
               className="tryAgain"
               onClick={() => {
                 localStorage.clear();
-                setPage(0);
+                router.push("/");
               }}
             >
               Tekrar Dene
@@ -126,7 +135,7 @@ export default function Questions({
         <>
           {data.quizzes.map(
             (x, i) =>
-              choose === x.title && (
+              choose === x.title.toLowerCase() && (
                 <div className="questions" key={i}>
                   <div className="question">
                     <div className="questionText">

@@ -305,7 +305,7 @@ export const data = {
     },
     {
       id: 4,
-      title: "Erişilebilirlik",
+      title: "Erisilebilirlik",
       icon: "./img/accessibility.svg",
       questions: [
         {
