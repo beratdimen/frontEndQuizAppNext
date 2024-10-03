@@ -24,15 +24,11 @@ export default function Home() {
   });
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      localStorage.setItem("page", page);
-    }
+    localStorage.setItem("page", page);
   }, [page]);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      localStorage.setItem("choose", choose);
-    }
+    localStorage.setItem("choose", choose);
   }, [choose]);
 
   useEffect(() => {
@@ -49,7 +45,11 @@ export default function Home() {
         </div>
         <div className="generalBody">
           <Hero />
-          <Title data={data} setChoose={setChoose} setPage={setPage} />
+          <Title
+            data={data}
+            setChoose={setChoose}
+            setPage={setPage}
+          />
         </div>
       </div>
     </div>
