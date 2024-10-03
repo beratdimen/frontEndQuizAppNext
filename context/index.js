@@ -5,12 +5,21 @@ import Cookies from "js-cookie";
 export const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
+  // const [darkMode, setDarkMode] = useState(
+  //   () => localStorage.getItem("darkMode") === "true"
+  // );
+
+  // useEffect(() => {
+  //   localStorage.setItem("darkMode", darkMode);
+  // }, [darkMode]);
+
   const [darkMode, setDarkMode] = useState(null);
 
   useEffect(() => {
     const cookieDarkMode = Cookies.get("darkMode") === "true";
     setDarkMode(cookieDarkMode);
   }, []);
+
   useEffect(() => {
     if (darkMode !== null) {
       Cookies.set("darkMode", darkMode, { expires: 7 });
